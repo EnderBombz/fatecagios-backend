@@ -1,0 +1,20 @@
+//Teste de requisição no produto
+
+@baseUrl = http://localhost:4000
+
+###
+//Obtendo os produtos
+GET {{baseUrl}}/get-estagios
+Content-Type: application/json
+
+
+###
+//Inserindo produtos
+POST {{baseUrl}}/produto
+Content-Type: application/json
+
+
+{"nome":"Arros agulhinha",
+    "descricao":"Arros Tipo 1",
+    "codigobarra":"0123456789123",
+    "preco":27.90}

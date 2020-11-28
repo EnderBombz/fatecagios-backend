@@ -10,7 +10,7 @@ const EstagiosSchema = require("./model/feed");
 const db = require('./db')
 const collection = "Estagios";
 
-
+//t
 // Inicializamos o servidor MongoDb
 InicializaMongoServer();
 
