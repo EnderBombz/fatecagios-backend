@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView, FlatList, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { Avatar, Button, Card, Title, Paragraph, TextInput } from 'react-native-paper';
@@ -9,7 +9,7 @@ const DATA = [
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
     img: "https://i.imgur.com/q0pVICG.jpg",
     author: 'Gustavo Patricio',
-    descricao: 'Trabalho na area de desenvolvimento mobile, estudo na FATEC-ITU, e sou foda.',
+    descricao: 'Trabalho na area de desenvolvimento mobile, estudo na FATEC-ITU',
     email: 'gustavo.patricio@fatec.sp.gov.br',
     Instituicao: 'Centro Paula Souza',
     icon: 'https://i.imgur.com/SALXaTr.jpg',
@@ -17,23 +17,40 @@ const DATA = [
 ]
 
 export default function App() {
+
+  let teste = []
+  const [perfil, setPerfil] = React.useState([])
+  React.useEffect(() => {
+  getPerfil();
+  })
+
+  const getPerfil = async() =>{
+    try{
+       let res = await Api.getPerfil()
+      console.log(res);
+       setPerfil(res);
+    }catch(error){
+      console.log(error)
+    }
+  }
+
   return (
     <>
       <View style={{ backgroundColor: '#000557', paddingVertical: 20 }}>
         <View style={styles.container}>
           <View style={styles.card}>
             <View style={{ flexDirection: 'row' }}>
-              <Avatar.Image size={45} source={{ uri: DATA[0].icon }} />
-              <Text style={{ margin: 8, fontSize: 20, marginRight: 80 }}>{DATA[0].author}</Text>
+              <Avatar.Image size={45} source={{ uri: perfil.icon }} />
+              <Text style={{ margin: 8, fontSize: 20, marginRight: 80 }}>{perfil.author}</Text>
 
             </View>
             <View style={{ marginTop: 30 }}>
               <Text style={styles.campoTitulo}>Email</Text>
-              <Text style={styles.campo}>{DATA[0].email}</Text>
+              <Text style={styles.campo}>{perfil.email}</Text>
               <Text style={styles.campoTitulo}>Instituição</Text>
-              <Text style={styles.campo}> {DATA[0].Instituicao}</Text>
+              <Text style={styles.campo}> {perfil.Instituicao}</Text>
               <Text style={styles.campoTitulo}>Descrição</Text>
-              <Text style={styles.campo}>{DATA[0].descricao}</Text>
+              <Text style={styles.campo}>{perfil.descricao}</Text>
             </View>
 
 

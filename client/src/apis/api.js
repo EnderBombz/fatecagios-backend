@@ -17,6 +17,23 @@ export default {
             console.log(error);
         }
 
+    },
+    getPerfil: async() => {
+        try {
+            const req = await fetch(`${BASE_API}/get-perfil`, {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+            const json = await req.json()
+            return json
+        } catch (error) {
+            console.log(error);
+        }
+
     }
+
 
 }

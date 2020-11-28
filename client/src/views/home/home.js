@@ -14,6 +14,7 @@ const DATA = [
     img: "https://i.imgur.com/q0pVICG.jpg",
     author: 'Gustavo Patricio',
     icon: 'https://i.imgur.com/SALXaTr.jpg',
+    email:'gustavo.patricio@fatec.sp.gov.br'
   },
   {
     id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
@@ -23,6 +24,7 @@ const DATA = [
     img: "https://i.imgur.com/0vjiGI1.jpg",
     author: 'Gabriel de Jesus',
     icon: 'https://i.imgur.com/V1DI4Ug.png',
+    email:'gabriel.martani@fatec.sp.gov.br'
   },
   {
     id: '58694a0f-3da1-471f-bd96-145571e29d72',
@@ -32,6 +34,7 @@ const DATA = [
     img: "https://i.imgur.com/XMzGYDP.png",
     author: 'Cebola',
     icon: 'https://i.imgur.com/DKzJCqA.png',
+    email:'cebola@fatec.sp.gov.br'
   },
   {
     id: '58694a0f-3da1-471f-bd96-145571e294543',
@@ -41,6 +44,7 @@ const DATA = [
     img: "https://i.imgur.com/xlpzFJx.png",
     author: 'Jadiane Pereira',
     icon: 'https://i.imgur.com/gmLyEoA.png',
+    email:'jadiane.pereira@fatec.sp.gov.br'
   },
   {
     id: '58694a0f-3da1-471f-bd96-1455714219d72',
@@ -50,6 +54,7 @@ const DATA = [
     img: "https://i.imgur.com/vqruCWV.jpg",
     author: 'Renatão Lanches',
     icon: 'https://i.imgur.com/Wo4URvU.png',
+    email:'renato@fatec.sp.gov.br'
   },
 ];
 
@@ -79,7 +84,7 @@ const Item = ({ item }) => (
           fontWeight: 'bold',
           letterSpacing: 2,
           fontSize: 13,
-        }}>EMAIL</Text>
+        }}>{item.email}</Text>
       </TouchableOpacity>
     </View>
 
@@ -117,7 +122,14 @@ export default function App() {
   const renderItem = ({ item }) => (
     <Item item={item} />
   );
-  const [text, setText] = React.useState('');
+  const [titulo, setTitulo] = React.useState('');
+const [content,setContent] = React.useState('');
+
+    function limpar(){
+      setTitulo('');
+      setContent('');
+    }
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -136,8 +148,8 @@ export default function App() {
                   underlineColor: '#3D0B1F'
                 }
               }}
-              value={text}
-              onChangeText={text => setText(text)}
+              value={titulo}
+              onChangeText={titulo => setTitulo(titulo)}
 
             ></TextInput>
             <TextInput
@@ -149,18 +161,18 @@ export default function App() {
                 }
               }}
               style={{ marginTop: 2 }}
-              value={text}
-              onChangeText={text => setText(text)}
+              value={content}
+              onChangeText={content => setContent(content)}
 
             ></TextInput>
           </Card.Content>
 
           <View style={styles.cardButtonArea}>
             <TouchableOpacity style={styles.touchableButton}>
-              <Text style={styles.textButton}>LIMPAR</Text>
+              <Text style={styles.textButton} onPress={limpar}>LIMPAR</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.touchableButton}>
-              <Text style={styles.textButton}>POSTAR</Text>
+              <Text style={styles.textButton} onPress={limpar}>POSTAR</Text>
             </TouchableOpacity>
           </View>
         </View>
