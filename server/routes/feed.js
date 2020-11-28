@@ -4,8 +4,8 @@ const router = express.Router();
 
 router.get("/", async(req, res) => {
     try {
-        const feed = await EstagiosSchema.find();
-        return res.send({ feed })
+        const estagio = await EstagiosSchema.find();
+        return res.json(estagio)
 
     } catch (e) {
         res.send({ error: "Erro ao obter os dados :" + e });

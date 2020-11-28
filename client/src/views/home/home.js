@@ -94,7 +94,7 @@ export default function App() {
   })
 
 
-  const getEstagios = async()=>{
+  /*const getEstagios = async()=>{
     try{
       let feed =  await fetch('http://localhost:4000/get-estagios');
       let responseJson = feed.json();
@@ -103,8 +103,8 @@ export default function App() {
       console.log(error)
     }
     
-  }
-  /*const getEstagios = async() =>{
+  }*/
+  const getEstagios = async() =>{
     try{
        let res = await Api.getEstagios()
       console.log(res);
@@ -112,7 +112,7 @@ export default function App() {
     }catch(error){
       console.log(error)
     }
-  }*/
+  }
 
   const renderItem = ({ item }) => (
     <Item item={item} />

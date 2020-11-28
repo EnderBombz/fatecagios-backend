@@ -19,6 +19,17 @@ const app = express();
 // Porta Default
 const PORT = process.env.PORT || 4000;
 
+// Exemplo de Middleware 
+app.use(function(req, res, next) {
+    // Em produção, remova o '*' e atualize com o domínio do seu app
+   res.setHeader("Access-Control-Allow-Origin", '*');
+   // Cabeçalhos que serão permitidos
+   res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-access-token");
+   // Métodos que serão permitidos
+   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+   next();  
+ });
+
 // parse application/json
 app.use(bodyParser.json())
 
